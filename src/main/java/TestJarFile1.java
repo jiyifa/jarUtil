@@ -3,8 +3,7 @@ import util.ByteToInputStream;
 
 import java.io.*;
 import java.util.Enumeration;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
+import java.util.jar.*;
 
 public class TestJarFile1 {
 
@@ -85,4 +84,61 @@ public class TestJarFile1 {
             os.close();
         }
     }
+//    //将class文件打成jar包
+//    public void generateJar() throws FileNotFoundException, IOException {
+//
+//        System.out.println("*** --> 开始生成jar包...");
+//        String targetDirPath = targetPath.substring(0, targetPath.lastIndexOf("/"));
+//        File targetDir = new File(targetDirPath);
+//        if (!targetDir.exists()) {
+//            targetDir.mkdirs();
+//        }
+//
+//        Manifest manifest = new Manifest();
+//        manifest.getMainAttributes().put(Attributes.Name.MANIFEST_VERSION, "1.0");
+//
+//        JarOutputStream target = new JarOutputStream(new FileOutputStream(targetPath), manifest);
+//        writeClassFile(new File(javaClassPath), target);
+//        target.close();
+//        System.out.println("*** --> jar包生成完毕。");
+//    }
+//    private void writeClassFile(File source, JarOutputStream target) throws IOException {
+//        BufferedInputStream in = null;
+//        try {
+//            if (source.isDirectory()) {
+//                String name = source.getPath().replace("\\", "/");
+//                if (!name.isEmpty()) {
+//                    if (!name.endsWith("/")) {
+//                        name += "/";
+//                    }
+//                    name = name.substring(javaClassPath.length());
+//                    JarEntry entry = new JarEntry(name);
+//                    entry.setTime(source.lastModified());
+//                    target.putNextEntry(entry);
+//                    target.closeEntry();
+//                }
+//                for (File nestedFile : source.listFiles())
+//                    writeClassFile(nestedFile, target);
+//                return;
+//            }
+//
+//            String middleName = source.getPath().replace("\\", "/").substring(javaClassPath.length());
+//            JarEntry entry = new JarEntry(middleName);
+//            entry.setTime(source.lastModified());
+//            target.putNextEntry(entry);
+//            in = new BufferedInputStream(new FileInputStream(source));
+//
+//            byte[] buffer = new byte[1024];
+//            while (true) {
+//                int count = in.read(buffer);
+//                if (count == -1)
+//                    break;
+//                target.write(buffer, 0, count);
+//            }
+//            target.closeEntry();
+//        } finally {
+//            if (in != null)
+//                in.close();
+//        }
+//    }
 }
