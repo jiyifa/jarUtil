@@ -197,7 +197,7 @@ public class Util_Jar_Test {
 
     @Test
     public void testUnJar(){
-        File src = new File("C:/a.jar");
+        File src = new File("E:/projectall/androidProject/testa/testCopy.jar");
 //        File src = new File("C:/b.rar");    //不支持rar解压
         String desFile = "aa";
         File desDir = new File(src.getParent()+File.separator+desFile);
